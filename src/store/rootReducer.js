@@ -1,8 +1,8 @@
-// import { combineReducers } from "redux";
-// import moiveReducer from "./moiveReducer";
+import { combineReducers } from "redux";
+import seatReducer from "./seatReducer";
 
-// const rootReducer = combineReducers({
-//   moiveReducer,
-// });
-
-// export default rootReducer;
+const rootReducer = combineReducers({
+  //Child reducer
+  seatReducer,
+});
+export default rootReducer;

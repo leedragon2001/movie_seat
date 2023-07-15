@@ -1,15 +1,27 @@
 import React, { Component } from "react";
 import InforBookingSeat from "./inforBookingSeat";
+import Seats from "./Seats";
+import data from "../danhSachGhe.json";
 
-export default class MovieSeat extends Component {
+export default class BookingTicket extends Component {
+  renderRowSeat = () => {
+    return data.map((rowSeat, index) => {
+      return (
+        <div key={index}>
+          <Seats rowSeat={rowSeat} numberRowSeat={index} />
+        </div>
+      );
+    });
+  };
   render() {
     return (
       <div
+        className="bookingMovie"
         style={{
           position: "fixed",
           width: "100%",
           height: "100%",
-          backgroundImage: "url('./img/bgmovie.jpg')",
+          backgroundImage: "url('./images/bgmovie.jpg')",
           backgroundSize: "100%",
         }}
       >
@@ -23,26 +35,27 @@ export default class MovieSeat extends Component {
         >
           <div className="container-fluid">
             <div className="row">
-              <div className="col-8 text-center">
-                <div className="display-4 text-warning">ĐẶT VÉ XEM PHIM</div>
-                <div className="mt-3 text-light" style={{ fontSize: "25px" }}>
-                  Màn hình
+              <div className="col-sm-8 text-center">
+                <h1 className="text-warning">BOOKING TICKET CYBERLEARN</h1>
+                <div className="mt-5 text-light" style={{ fontSize: "25px" }}>
+                  Screen This Way
                 </div>
                 <div
                   className="mt-2"
                   style={{
                     display: "flex",
-                    flexDirection: "row",
+                    flexDirection: "column",
                     justifyContent: "center",
                   }}
                 >
                   <div className="screen"></div>
+                  {this.renderRowSeat()}
                 </div>
               </div>
-              <div className="col-4 text-center">
-                <div style={{ fontSize: "35px" }} className=" text-light mt-2">
-                  DANH SÁCH GHẾ BẠN CHỌN
-                </div>
+              <div className="col-sm-4">
+                <h1 className="text-light mt-5" style={{ fontSize: "30px" }}>
+                  LIST SEATS YOUR CHOOSE
+                </h1>
                 <InforBookingSeat />
               </div>
             </div>
